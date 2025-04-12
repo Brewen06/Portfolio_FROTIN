@@ -1,34 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Rockwell&display=swap');
 
-/* --- Typographie et curseurs --- */
-,button, input, textarea, select, body {
-    font-family: 'Montserrat', sans-serif;
-    cursor: url('mouse/cursor-fill.svg') 0 0, auto;
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap');
+
+/* Réinitialisation et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-a, button, input[type="submit"], input[type="button"], select {
-    cursor: url('mouse/hand-index-thumb-fill.svg') 0 0, pointer;
-}
-
-p, span, input, textarea, h1, h2, h3 {
-    cursor: url('mouse/cursor-text.svg') 0 0, text;
-}
-
-/* --- Style général du body --- */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     font-size: 16px;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
 }
 
 body {
     padding-top: 70px;
     padding-bottom: 70px;
-    background-color: #f0f2f5;
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* --- Style du Header --- */
+/* Typographie */
+h1 {
+    color: #2c3e50;
+    margin: 20px 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+h2 {
+    color: #34495e;
+    margin: 15px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+h3 {
+    color: #3498db;
+    margin: 10px 0;
+    font-size: 1.3rem;
+}
+
+p {
+    margin: 10px 0;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: #3498db;
+    margin: 20px auto;
+    width: 60%;
+    border-radius: 5px;
+}
+
+ul {
+    list-style-position: inside;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Header */
 header {
     position: fixed;
     top: 0;
@@ -36,10 +90,10 @@ header {
     width: 100%;
     background-color: #2c3e50;
     color: #ecf0f1;
+    padding: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header:hover {
@@ -54,51 +108,28 @@ header:hover {
 }
 
 .td_links td {
-    padding: 12px 20px;
     text-align: center;
+    padding: 12px 20px;
 }
 
 .td_links a {
-    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
     color: #ecf0f1;
     font-size: 18px;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out, transform 0.2s ease;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 2px solid transparent;
 }
 
 .td_links a:hover {
     color: #f39c12;
+    text-decoration: none;
+    border-bottom: 2px solid #f39c12;
     transform: scale(1.05);
 }
 
-/* --- Style Footer --- */
-.footer {
-    background-color: #2c3e50;
-    padding: 20px 0;
-    text-align: center;
-    border-top: 1px solid #e7e7e7;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-.footer a {
-    color: #ecf0f1;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.footer a:hover {
-    text-decoration: underline;
-}
-
-.footer p {
-    margin: 10px 0 0;
-    color: #95a5a6;
-    font-size: 14px;
-}
-
-/* --- Style Accueil --- */
+/* Accueil */
 .accueil {
     text-align: center;
     max-width: 800px;
@@ -115,6 +146,7 @@ header:hover {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -143,71 +175,83 @@ header:hover {
     font-weight: bold;
     text-decoration: none;
     border-radius: 8px;
-    transition: background 0.3s ease-in-out, transform 0.2s ease;
+    transition: all 0.3s ease-in-out;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .button_presentation:hover {
     background-color: #16a085;
     transform: scale(1.05);
+    text-decoration: none;
+    color: white;
 }
 
-/* --- Style Présentation --- */
-.presentation {
-    text-align: center;
+/* Sections communes - Style de base pour les conteneurs */
+.presentation,
+.competences,
+.projet,
+.experiences,
+.dipl_certif,
+.contact {
     max-width: 900px;
-    margin: 50px auto;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    animation: fadeInUp 0.8s ease-out;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.presentation:hover {
+/* Section CV avec styles spécifiques */
+.cv-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.presentation:hover,
+.competences:hover,
+.projet:hover,
+.experiences:hover,
+.dipl_certif:hover,
+.cv-container:hover,
+.contact:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.presentation h1 {
+.presentation_titre,
+.competences_titre,
+.projet_titre,
+.experiences_titre,
+.dipl_certif_titre,
+.contact_titre {
+    text-align: center;
+    margin-bottom: 20px;
     font-size: 36px;
     color: #333;
-    margin-bottom: 20px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-weight: bold;
 }
 
-.presentation hr {
-    width: 60%;
-    border: 1px solid #007BFF;
-    margin: 20px auto;
-    border-radius: 5px;
-}
-
-.presentation_contenu {
+.presentation_contenu,
+.projet_intro,
+.contact_intro {
     text-align: justify;
     font-size: 18px;
     color: #444;
     line-height: 1.7;
-    margin-top: 25px;
+    margin: 20px 0;
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Présentation spécifique */
 .presentation_contenu h2 {
     font-size: 22px;
     font-weight: 600;
@@ -231,60 +275,30 @@ header:hover {
 .presentation_contenu li::before {
     content: "📌";
     font-size: 18px;
-    color: #007BFF;
+    color: #3498db;
     margin-right: 10px;
 }
 
-.button_presentation {
-    display: inline-block;
-    background-color: #007BFF;
-    color: white;
-    padding: 14px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
-}
-
-.button_presentation:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
-}
-
-/* --- Style Compétences --- */
-.competences {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.competences h1 {
-    text-align: center;
-    color: #333;
-    font-size: 36px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.competences h2, .competences h3 {
-    color: #2c3e50;
-    font-weight: bold;
+/* Compétences */
+.prog,
+.reseau,
+.windows,
+.linux {
+    margin: 20px 0;
 }
 
 .competences h2 {
     font-size: 26px;
     margin-top: 30px;
+    color: #2c3e50;
+    font-weight: bold;
 }
 
 .competences h3 {
     font-size: 22px;
     margin-top: 20px;
+    color: #2c3e50;
+    font-weight: bold;
 }
 
 .competences ul {
@@ -304,19 +318,16 @@ header:hover {
     font-weight: bold;
 }
 
-/* --- Style Projet --- */
-.projet {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+.langages,
+.BD,
+.GIT {
+    margin: 15px 0;
+    padding-left: 20px;
 }
 
-.projet h1 {
-    color: #333;
-    text-align: center;
+/* Projets */
+.projet_contenu {
+    padding: 0 20px;
 }
 
 .projet h2 {
@@ -340,95 +351,70 @@ header:hover {
     color: #7f8c8d;
 }
 
-/* --- Style Expériences --- */
-.experiences {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.experiences h1 {
-    color: #333;
-}
-
-.stages, .travail {
+/* Expériences */
+.stages,
+.travail {
     text-align: left;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
-.stages h2, .travail h2 {
+.stages h2,
+.travail h2 {
     color: #34495e;
     font-size: 1.5em;
 }
 
-.stages ul, .travail ul {
+.stages ul,
+.travail ul {
     list-style-type: disc;
     padding-left: 20px;
 }
 
-.stages li, .travail li {
-    margin-bottom: 10px;
-}
-
-/* --- Style Diplômes et Certifications --- */
-.dipl_certif {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.dipl_certif h1 {
-    font-size: 36px;
-    color: #333;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.diplomes, .certifications {
+/* Diplômes et certifications */
+.diplomes,
+.certifications {
     text-align: left;
     margin-top: 20px;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 6px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.diplomes h2, .certifications h2 {
+.diplomes h2,
+.certifications h2 {
     font-size: 28px;
     color: #34495e;
     margin-bottom: 15px;
-    border-bottom: 3px solid #1abc9c;
+    border-bottom: 3px solid #3498db;
     padding-bottom: 5px;
 }
 
-.diplomes h3, .certifications h3 {
+.diplomes h3,
+.certifications h3 {
     font-size: 22px;
     color: #7f8c8d;
     margin-bottom: 10px;
 }
 
-.diplomes ul, .certifications ul {
+.diplomes ul,
+.certifications ul {
     list-style-type: none;
     padding: 0;
     font-size: 18px;
     color: #7f8c8d;
 }
 
-.diplomes li, .certifications li {
+.diplomes li,
+.certifications li {
     margin-bottom: 12px;
     line-height: 1.6;
     padding-left: 25px;
     position: relative;
 }
 
-.diplomes li::before, .certifications li::before {
+.diplomes li::before,
+.certifications li::before {
     content: "🎓";
     font-size: 20px;
     position: absolute;
@@ -438,57 +424,38 @@ header:hover {
 
 .certification-button {
     display: inline-block;
-    background-color: #1abc9c;
+    background-color: #3498db;
     color: white;
     padding: 12px 20px;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
     border-radius: 5px;
-    transition: background 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    margin: 5px 0;
 }
 
 .certification-button:hover {
-    background-color: #16a085;
+    background-color: #2980b9;
+    text-decoration: none;
     transform: scale(1.05);
 }
 
-/* STYLE CV*/
-
+/* CV - Section améliorée */
 .cv-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cv-container:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-}
-
-.cv h1 {
-    font-size: 36px;
-    color: #007BFF;
-    margin-bottom: 20px;
-    font-weight: bold;
+    margin: 50px auto;
+    width: 80%;
 }
 
 .cv-embed {
-    width: 100%;
-    height: 500px;
+    width: 80%;
+    height: 600px;
+    border: 1px solid #ccc;
     margin-bottom: 20px;
-    border: 2px solid #007BFF;
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-}
-
-.cv-embed:hover {
-    border-color: #0056b3;
 }
 
 .cv-download {
@@ -497,42 +464,28 @@ header:hover {
 
 .cv-download-button {
     display: inline-block;
-    padding: 12px 25px;
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+    padding: 12px 20px;
     font-size: 18px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
 }
 
 .cv-download-button:hover {
     background-color: #0056b3;
-    transform: scale(1.05);
-}
-/* Style Contact */
-.contact {
-    text-align: center;
-    padding: 30px;
-    background-color: #ffffff;
-    margin: 40px auto;
-    max-width: 700px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.contact:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-}
-
-.contact h1, h2 {
-    color: #333;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 20px;
+/* Contact */
+.postale,
+.mails,
+.tel {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact h3 {
@@ -554,13 +507,163 @@ header:hover {
 }
 
 .contact a {
-    color: #007BFF;
-    text-decoration: none;
+    color: #3498db;
     font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .contact a:hover {
-    color: #0056b3;
-    transform: scale(1.05);
+    color: #2980b9;
+}
+
+/* Footer */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer a {
+    color: #74b9ff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
+.footer p {
+    margin-top: 10px;
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.presentation,
+.competences,
+.projet,
+.experiences,
+.dipl_certif,
+.cv-container,
+.contact {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .table_header {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .td_links td {
+        padding: 5px;
+    }
+
+    .accueil h1 {
+        font-size: 2rem;
+    }
+
+    .accueil h2 {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .presentation,
+    .competences,
+    .projet,
+    .experiences,
+    .dipl_certif,
+    .cv-container,
+    .contact {
+        padding: 15px;
+        margin: 20px auto;
+    }
+
+    .cv-embed {
+        height: 500px;
+    }
+
+    .button_presentation {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .presentation_contenu,
+    .projet_intro,
+    .contact_intro {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .cv-format-options {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+/* Pour les grands écrans */
+@media (min-width: 1200px) {
+    .cv-embed {
+        height: 900px;
+        /* Encore plus grand pour les écrans larges */
+    }
+
+    .cv-container {
+        max-width: 1400px;
+        /* Plus large pour accommoder le CV complet */
+    }
+}
+
+/* Pour l'impression du CV */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .cv-container,
+    .cv-container * {
+        visibility: visible;
+    }
+
+    .cv-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .cv-controls,
+    .cv-download,
+    .cv-options {
+        display: none;
+    }
 }
