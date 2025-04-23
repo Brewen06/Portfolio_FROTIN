@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap');
 
 /* Réinitialisation et styles de base */
@@ -441,6 +440,66 @@ header:hover {
     transform: scale(1.05);
 }
 
+/* Veille technologique */
+/* Veille Technologique */
+.veille {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.veille:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.veille_titre {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.veille_intro {
+    text-align: justify;
+    font-size: 18px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.veille_contenu ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.veille_contenu li {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.veille_contenu li::before {
+    content: "🧭";
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 /* CV - Section améliorée */
 .cv-container {
     display: flex;
@@ -563,7 +622,7 @@ header:hover {
 .projet,
 .experiences,
 .dipl_certif,
-.cv-container,
+.cv-container .veille,
 .contact {
     animation: fadeInUp 0.8s ease-out;
 }
@@ -600,7 +659,7 @@ header:hover {
     .projet,
     .experiences,
     .dipl_certif,
-    .cv-container,
+    .cv-container .veille,
     .contact {
         padding: 15px;
         margin: 20px auto;
