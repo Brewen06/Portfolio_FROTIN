@@ -26,18 +26,11 @@
     <h2>Voici ma veille technologique sur l'intelligence artificielle, mise à jour automatiquement grâce à un flux RSS.</h2>
 
     <?php
-    $rss = simplexml_load_file('https://www.actuia.com/feed/');
+	$xml = simplexml_load_file('https://www.actuia.com/feed/');
 
-    if ($rss) {
-        $i = 0;
-        foreach ($rss->channel->item as $item) {
-            echo "<p><a href='{$item->link}' target='_blank'>{$item->title}</a><br/>";
-            echo "<small>Publié le : " . date('d/m/Y', strtotime($item->pubDate)) . "</small></p>";
-            if (++$i == 5) break; // Limite à 5 articles
-        }
-    } else {
-        echo "<p>Le flux RSS est actuellement indisponible.</p>";
-    }
+	foreach ($xml->channel->item as $item) {
+    	print('<a href="' . $item->link . '">' . $item->title . '</a><br/>');
+	}
     ?>
 </div>
 
