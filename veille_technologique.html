@@ -46,9 +46,13 @@
 
   function displayFeed(items) {
     const container = document.querySelector(".veille");
-    container.innerHTML = "";
+    container.innerHTML = "<ul class='rss-list'></ul>";
+    const list = container.querySelector(".rss-list");
+
     items.forEach(item => {
-      container.innerHTML += `<article><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a><br><time>${new Date(item.pubDate).toLocaleDateString("fr-FR")}</time></article>`;
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `<strong>${new Date(item.pubDate).toLocaleDateString("fr-FR")}</strong> : <a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
+      list.appendChild(listItem);
     });
   }
 </script>
