@@ -24,15 +24,24 @@
 <hr>
 <div class="veille">
     <h1>Veille technologique</h1>
-    <h2>Voici ma veille technologique sur l'intelligence artificielle, mise à jour automatiquement grâce à un flux RSS.</h2>
+    <h2>Voici ma veille technologique sur l'intelligence artificielle.</h2>
 
-    <?php
-	$xml = simplexml_load_file('https://www.actuia.com/feed/');
+   <script>
+fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.actuia.com/feed/")
+  .then(response => response.json())
+  .then(data => {
+    const container = document.querySelector(".veille");
+    data.items.forEach(item => {
+      const link = document.createElement("a");
+      link.href = item.link;
+      link.textContent = item.title;
+      link.target = "_blank";
+      container.appendChild(link);
+      container.appendChild(document.createElement("br"));
+    });
+  });
+</script>
 
-	foreach ($xml->channel->item as $item) {
-    	print('<a href="' . $item->link . '">' . $item->title . '</a><br/>');
-	}
-    ?>
 </div>
 
 <footer class="footer">
