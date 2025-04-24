@@ -26,34 +26,33 @@
     <h1>Veille technologique</h1>
     <h2>Voici ma veille technologique sur l'intelligence artificielle.</h2>
 
-  <script>
-        async function fetchFeed() {
-            const url = "https://api.rss2json.com/v1/api.json?rss_url=https://www.actuia.com/feed/";
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                const data = await response.json();
-                displayFeed(data.items);
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
-        }
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchFeed();
+    setInterval(fetchFeed, 300000); // Rafraîchit toutes les 5 minutes (300000 ms)
+  });
 
-        function displayFeed(items) {
-            const container = document.querySelector(".veille");
-            items.forEach(item => {
-                const link = document.createElement("a");
-                link.href = item.link;
-                link.textContent = item.title;
-                link.target = "_blank";
-                container.appendChild(link);
-            });
-        }
+  async function fetchFeed() {
+    const url = "https://api.rss2json.com/v1/api.json?rss_url=https://www.actuia.com/feed/";
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      displayFeed(data.items);
+    } catch (error) {
+      console.error("Erreur lors de la récupération du flux:", error);
+      document.querySelector(".veille").innerHTML = "<p>Erreur de chargement du flux.</p>";
+    }
+  }
 
-        fetchFeed();
-    </script>
+  function displayFeed(items) {
+    const container = document.querySelector(".veille");
+    container.innerHTML = "";
+    items.forEach(item => {
+      container.innerHTML += `<article><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a><br><time>${new Date(item.pubDate).toLocaleDateString("fr-FR")}</time></article>`;
+    });
+  }
+</script>
+
 </div>
 
 <footer class="footer">
