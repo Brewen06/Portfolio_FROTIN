@@ -27,53 +27,33 @@
     <h2>Voici ma veille technologique sur l'intelligence artificielle.</h2>
 
   <script>
-  const rssFeedUrl = "https://www.actuia.com/feed/";
-  const apiKey = "YOUR_RSS2JSON_API_KEY"; // Ajoutez votre clé API ici (si nécessaire)
-  const containerSelector = ".veille";
-  const targetAttribute = "_blank";
+        async function fetchFeed() {
+            const url = "https://api.rss2json.com/v1/api.json?rss_url=https://www.actuia.com/feed/";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.json();
+                displayFeed(data.items);
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        }
 
-  async function fetchAndDisplayFeed(url, apiKey, selector, target) {
-    try {
-      const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}&api_key=${apiKey}`);
-      if (!response.ok) {
-        throw new Error(`Erreur HTTP! statut: ${response.status}`);
-      }
-      const data = await response.json();
-      const container = document.querySelector(selector);
+        function displayFeed(items) {
+            const container = document.querySelector(".veille");
+            items.forEach(item => {
+                const link = document.createElement("a");
+                link.href = item.link;
+                link.textContent = item.title;
+                link.target = "_blank";
+                container.appendChild(link);
+            });
+        }
 
-      if (!container) {
-        console.error(`L'élément avec le sélecteur "${selector}" n'a pas été trouvé.`);
-        return;
-      }
-
-      if (data && data.items && data.items.length > 0) {
-        data.items.forEach(item => {
-          const link = document.createElement("a");
-          link.href = item.link;
-          link.textContent = item.title;
-          link.target = target;
-          container.appendChild(link);
-          container.appendChild(document.createElement("br"));
-        });
-      } else if (data && data.status && data.status.error) {
-        console.error("Erreur lors de la récupération du flux RSS:", data.status.message);
-        container.textContent = "Impossible de charger le flux d'informations.";
-      } else {
-        container.textContent = "Aucun élément trouvé dans le flux.";
-      }
-
-    } catch (error) {
-      console.error("Une erreur s'est produite lors de la récupération et de l'affichage du flux:", error);
-      const container = document.querySelector(selector);
-      if (container) {
-        container.textContent = "Une erreur s'est produite lors du chargement du flux.";
-      }
-    }
-  }
-
-  fetchAndDisplayFeed(rssFeedUrl, apiKey, containerSelector, targetAttribute);
-</script>
-
+        fetchFeed();
+    </script>
 </div>
 
 <footer class="footer">
