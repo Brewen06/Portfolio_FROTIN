@@ -25,8 +25,7 @@
 <div class="veille">
     <h1>Veille technologique</h1>
     <h2>Voici ma veille technologique sur l'intelligence artificielle.</h2>
-	<h3>J'ai choisi le thème de l'IA car je pense que <br>c'est la technologie d'aujourd'hui qui risque d'évoluer constamment</h3>
-</div>
+
  <script>
   document.addEventListener("DOMContentLoaded", () => {
     fetchFeed();
@@ -52,13 +51,13 @@
 
     items.forEach(item => {
       const listItem = document.createElement("li");
-      listItem.innerHTML = <strong>${new Date(item.pubDate).toLocaleDateString("fr-FR")}</strong> : <a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>;
+      listItem.innerHTML = `<strong>${new Date(item.pubDate).toLocaleDateString("fr-FR")}</strong> : <a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
       list.appendChild(listItem);
     });
   }
 </script>
 
-
+</div>
 
 <footer class="footer">
     <center>
