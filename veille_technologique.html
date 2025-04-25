@@ -46,21 +46,16 @@
   }
 
   function displayFeed(items) {
-  const container = document.querySelector(".veille");
-  let list = container.querySelector(".rss-list");
-  if (!list) {
-    list = document.createElement("ul");
-    list.className = "rss-list";
-    container.appendChild(list);
-  } else {
-    list.innerHTML = "";
+    const container = document.querySelector(".veille");
+    container.innerHTML = "<ul class='rss-list'></ul>";
+    const list = container.querySelector(".rss-list");
+
+    items.forEach(item => {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = <strong>${new Date(item.pubDate).toLocaleDateString("fr-FR")}</strong> : <a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>;
+      list.appendChild(listItem);
+    });
   }
-  items.forEach(item => {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `<strong>${new Date(item.pubDate).toLocaleDateString("fr-FR")}</strong> : <a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
-    list.appendChild(listItem);
-  });
-}
 </script>
 <footer class="footer">
     <center>
